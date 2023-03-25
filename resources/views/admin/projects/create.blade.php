@@ -44,10 +44,11 @@
                         <label for="type" class="form-label">
                             <strong>Project type</strong><span class="text-danger">*</span> 
                         </label>
-                        <select class="form-select" aria-label="Default select example" name="type" required id="type">
-                            <option selected>Select type</option>
-                            <option value="private {{ old('type' == 'private' ? 'selected' : '') }}">Private</option>
-                            <option value="public {{ old('type' == 'public' ? 'selected' : '') }}">Public</option>
+                        <select class="form-select" aria-label="Default select example" name="type_id" required id="type">
+                            <option value="">Select type</option>
+                            @foreach ($types as $type)
+                                <option value="{{ $type->id }}" {{ old('type_id') ==  $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
+                            @endforeach
                         </select>
                         <div>
                             <button class="btn btn-success mt-4" type="submit">

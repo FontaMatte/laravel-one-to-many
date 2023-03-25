@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Validation\Rule;
 
 // Helpers
@@ -36,7 +37,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -56,7 +59,7 @@ class ProjectController extends Controller
         
         $newProject = Project::create($data);
 
-        Mail::to('matteo@classe84.com')->send(new NewProject($newProject));
+        // Mail::to('matteo@classe84.com')->send(new NewProject($newProject));
 
         return redirect()->route('admin.projects.show', $newProject)->with('success', 'Project successfully added');
     }
@@ -80,7 +83,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::all();
+
+        return view('admin.projects.edit', compact('project','types'));
     }
 
     /**

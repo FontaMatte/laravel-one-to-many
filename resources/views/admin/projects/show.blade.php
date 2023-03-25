@@ -20,7 +20,7 @@
                    <strong>Stars:</strong> {{ $project->stars }}
                 </div>
                 <div>
-                    <strong>Repository type:</strong> {{ $project->type }}
+                    <strong>Repository type:</strong> {{ $project->type ? $project->type->name : 'No-Type' }}
                 </div>
                 <a href="{{ route('admin.projects.index') }}" class="btn btn-success mt-4">
                     Back

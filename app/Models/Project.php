@@ -15,6 +15,11 @@ class Project extends Model
         'commits',
         'stars',
         'type',
-        'img'
+        'img',
+        'type_id'
     ];
+
+    public function type() {
+        return $this->belongsTo(Type::class);
+    }
 }

@@ -37,7 +37,7 @@
                             <td>{{ $project->title }}</td>
                             <td>{{ $project->commits }}</td>
                             <td>{{ $project->stars }}</td>
-                            <td>{{ $project->type }}</td>
+                            <td>{{ $project->type ? $project->type->name : 'No-Type' }}</td>
                             <td>
                                 <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-primary">
                                     Details

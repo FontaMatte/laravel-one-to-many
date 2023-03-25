@@ -50,10 +50,11 @@
                         <label for="img" class="form-label">
                             <strong>Project Type</strong> 
                         </label>
-                        <select class="form-select" aria-label="Default select example" name="type" required>
-                            <option selected>Select type</option>
-                            <option value="private" {{ old('type', $project->type) == 'private' ? 'selected' : '' }}>Private</option>
-                            <option value="public" {{ old('type', $project->type) == 'public' ? 'selected' : '' }}>Public</option>
+                        <select class="form-select" aria-label="Default select example" name="type_id" required id="type">
+                            <option value="">Select type</option>
+                            @foreach ($types as $type)
+                                <option value="{{ $type->id }}" {{ old('type_id', $project->type_id) ==  $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
+                            @endforeach
                         </select>
                         <div>
                             <button class="btn btn-success mt-4" type="submit">

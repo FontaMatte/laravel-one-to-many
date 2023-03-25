@@ -31,9 +31,7 @@ class UpdateProjectRequest extends FormRequest
                         Rule::unique('projects')->ignore($this->project),
                         'max:64',
                         ],
-            'type' => ['required',
-                        Rule::in(['public','private'])
-                    ],
+            'type_id' => 'nullable|exists:types,id',
             'img' => 'nullable|image|max:2048',
             'delete_img' => 'nullable'
         ];
